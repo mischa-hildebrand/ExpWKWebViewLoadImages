@@ -19,11 +19,17 @@ class ViewController: UIViewController {
         return "image" + (imageURL?.lastPathComponent)!
     }
     
+    let htmlName = "htmlFile.html"
+    
+    var htmlURL: URL {
+        return libraryURL.appendingPathComponent(htmlName)
+    }
+    
     var htmlString: String {
         return "<html><head><title>Testing images in a WKWebView</title></head><body style=\"font-size: 2rem\"><h1>This is the Heading</h1><p>... and this is a paragraph. Both are contained in an HTML string that is loaded inside the <b>WKWebView</b> using its <b>loadHTMLString(String, baseURL: URL?)</b> method.</p><p>In the following line an image should be displayed:</p><p><img src=\"\(imageName)\" /></p><p>For some mysterious reason, it works in Simulator but it doesn't on a real device. So sad. :(</p></body></html>"
     }
     
-    let libraryURL = try? FileManager.default.url(for: FileManager.SearchPathDirectory.libraryDirectory,
+    let libraryURL = try! FileManager.default.url(for: FileManager.SearchPathDirectory.libraryDirectory,
                                                  in: FileManager.SearchPathDomainMask.userDomainMask,
                                                  appropriateFor: nil,
                                                  create: false)
@@ -32,8 +38,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         addWebView()
+        
+        try! htmlString.write(to: htmlURL, atomically: true, encoding: .utf8)
+        
         try! downloadAndStoreImageInLibraryFolder()
-        webView.loadHTMLString(htmlString, baseURL: libraryURL!)
+        
+        webView.loadFileURL(htmlURL, allowingReadAccessTo: htmlURL.deletingLastPathComponent())
+        
+        //webView.loadHTMLString(htmlString, baseURL: libraryURL)
     }
     
     func addWebView() {
@@ -43,8 +55,8 @@ class ViewController: UIViewController {
     
     func downloadAndStoreImageInLibraryFolder() throws {
         let data = try Data(contentsOf: imageURL!)
-        let targetImageURL = libraryURL?.appendingPathComponent(imageName)
-        try data.write(to: targetImageURL!)
+        let targetImageURL = libraryURL.appendingPathComponent(imageName)
+        try data.write(to: targetImageURL)
     }
     
     func loadWebsite() {
