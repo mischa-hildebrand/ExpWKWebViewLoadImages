@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ExpWKWebViewLoadImages" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +16,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUp-wq-MVO">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kFj-2V-cBx">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-NC-BFs">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="from Web"/>
+                                                <connections>
+                                                    <action selector="loadFromWebButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y6m-bF-Cvp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGU-03-Xod">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="from Bundle"/>
+                                                <connections>
+                                                    <action selector="loadFromBundleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9TU-7Z-iak"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gB-le-kX3">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="from Library"/>
+                                                <connections>
+                                                    <action selector="loadFromLibraryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FgV-if-2gQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="jGU-03-Xod" firstAttribute="width" secondItem="7gB-le-kX3" secondAttribute="width" id="2ca-RB-YvP"/>
+                                            <constraint firstItem="nMb-NC-BFs" firstAttribute="width" secondItem="jGU-03-Xod" secondAttribute="width" id="UR2-Qk-1tf"/>
+                                            <constraint firstAttribute="height" constant="44" id="mX4-YC-J4b"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load WebView:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzJ-9k-Hi6">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kFj-2V-cBx" firstAttribute="top" secondItem="LzJ-9k-Hi6" secondAttribute="bottom" constant="8" id="Tpm-6M-SWN"/>
+                                    <constraint firstItem="LzJ-9k-Hi6" firstAttribute="centerX" secondItem="UUp-wq-MVO" secondAttribute="centerX" id="bTm-I4-20P"/>
+                                    <constraint firstItem="kFj-2V-cBx" firstAttribute="leading" secondItem="UUp-wq-MVO" secondAttribute="leading" constant="8" id="fOv-L8-mBa"/>
+                                    <constraint firstItem="kFj-2V-cBx" firstAttribute="centerY" secondItem="UUp-wq-MVO" secondAttribute="centerY" constant="14" id="sUG-xK-7I1"/>
+                                    <constraint firstAttribute="trailing" secondItem="kFj-2V-cBx" secondAttribute="trailing" constant="8" id="vdB-iK-vzZ"/>
+                                    <constraint firstAttribute="height" constant="128" id="wTG-7S-EMK"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5y-Mo-VYi">
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UUp-wq-MVO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0ar-be-zxh"/>
+                            <constraint firstItem="UUp-wq-MVO" firstAttribute="top" secondItem="G5y-Mo-VYi" secondAttribute="bottom" id="16y-Ge-LVa"/>
+                            <constraint firstAttribute="trailing" secondItem="UUp-wq-MVO" secondAttribute="trailing" id="B0U-A6-sae"/>
+                            <constraint firstAttribute="trailing" secondItem="G5y-Mo-VYi" secondAttribute="trailing" id="RSY-q2-mvl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UUp-wq-MVO" secondAttribute="bottom" id="Y1j-U7-ZYc"/>
+                            <constraint firstItem="G5y-Mo-VYi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fb5-Md-rSf"/>
+                            <constraint firstItem="G5y-Mo-VYi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kiF-ab-eQP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonControlView" destination="UUp-wq-MVO" id="XeX-gv-nK4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="34.632683658170919"/>
         </scene>
     </scenes>
 </document>
