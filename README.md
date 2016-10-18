@@ -5,7 +5,7 @@ As explained in [my question on Stackoverflow](http://stackoverflow.com/q/399019
 
 With the input I received from several answers I created this project to test WKWebView's image loading ability in different situations:
 
-1. Loading a website from the web using `load(request:)`
+1. Loading a website from the web with `load(_:)` using a URLRequest.
 2. Loading a plain html string with `loadHTMLString(_: baseURL:)` using the Bundle's root URL as baseURL. (The image is stored in the Bundle's root folder at Build time.)
 3. Loading a plain html string with `loadHTMLString(_: baseURL:)` using the default Library URL as baseURL. (The image is downloaded from the web and stored in the Library folder.)
 
