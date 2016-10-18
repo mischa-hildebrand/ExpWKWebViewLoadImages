@@ -95,10 +95,11 @@ class ViewController: UIViewController {
     }
     
     func loadLocalHTMLString(with baseURLTarget: BaseURLTarget) {
-        print("Loading Webview with baseURL: \(baseURLTarget.url)\n")
+        let baseURL = baseURLTarget.url
+        print("Loading Webview with baseURL: \(baseURL)\n")
         print("--- Contents of directory: ---\n")
-        printContentsOfDirectory(at: baseURLTarget.url)
-        webView.loadHTMLString(htmlString, baseURL: baseURLTarget.url)
+        printContentsOfDirectory(at: baseURL)
+        webView.loadHTMLString(htmlString, baseURL: baseURL)
     }
     
     // MARK: - Helpers
